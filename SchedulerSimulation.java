@@ -30,6 +30,9 @@ class Process implements Runnable {
     private int timeQuantum; // Time slice (time quantum) allowed per CPU access (in milliseconds)
     private int remainingTime; // Time left for the process to finish its execution
     private int priority;
+    private long creationTime;
+    private long waitingTime;
+    private long waitingStartTime;
 
     // Constructor to initialize the process with name, burst time, and time quantum
     public Process(String name, int burstTime, int priority, int timeQuantum) {
@@ -38,6 +41,9 @@ class Process implements Runnable {
         this.priority = priority;
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
+        this.creationTime = System.currentTimeMillis();
+        this.waitingTime = 0;
+        this.waitingStartTime = this.creationTime;
     }
 
     // This method will be called when the thread for this process is started
@@ -140,6 +146,18 @@ class Process implements Runnable {
         return remainingTime;
     }
 
+    public void updateWaitingTime() {
+        waitingTime += System.currentTimeMillis() - waitingStartTime;
+    }
+
+    public void resetWaitingStartTime() {
+        waitingStartTime = System.currentTimeMillis();
+    }
+
+    public long getWaitingTime() {
+        return waitingTime;
+    }
+
     // Check if the process has finished (i.e., no remaining time)
     public boolean isFinished() {
         return remainingTime <= 0;
@@ -234,6 +252,7 @@ public class SchedulerSimulation {
         while (!processQueue.isEmpty()) {
             // Get the next thread from the queue (FIFO)
             Thread currentThread = processQueue.poll(); // Dequeues the next thread
+            processMap.get(currentThread).updateWaitingTime();
 
             // Print the current process queue (list of process IDs in the queue)
             System.out.println(Colors.BOLD + Colors.MAGENTA + "┌─ Ready Queue " + "─".repeat(65) + Colors.RESET);
@@ -272,6 +291,7 @@ public class SchedulerSimulation {
                 // If the process still has remaining time, check if there are more processes in
                 // queue
                 if (!processQueue.isEmpty()) {
+                    process.resetWaitingStartTime();
                     // Re-enqueue the process to give it another chance to run in the next round
                     addProcessToQueue(process, processQueue, processMap);
                 } else {
@@ -295,6 +315,18 @@ public class SchedulerSimulation {
         System.out.println(Colors.BOLD + Colors.BRIGHT_GREEN +
                 "╚════════════════════════════════════════════════════════════════════════════════╝" +
                 Colors.RESET + "\n");
+        // Feature 3: Display burst, waiting, and turnaround times in a summary table.
+        System.out.printf("%-15s %-15s %-18s %-18s%n", "Process Name", "Burst Time", "Waiting Time", "Turnaround Time");
+        System.out.println("--------------------------------------------------------------------------");
+        processMap.values().stream().distinct().forEach(p -> {
+            long waitingTime = p.getWaitingTime();
+            long turnaroundTime = waitingTime + p.getBurstTime();
+            System.out.printf("%-15s %-15s %-18s %-18s%n",
+                    p.getName(),
+                    p.getBurstTime() + "ms",
+                    waitingTime + "ms",
+                    turnaroundTime + "ms");
+        });
         System.out.println("Total context swithches: " + contextSwitches);
     }
 
