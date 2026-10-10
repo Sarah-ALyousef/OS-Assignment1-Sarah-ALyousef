@@ -289,8 +289,7 @@ In a web browser, I can benefit from multithreading by using multiple tabs. For 
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
-
+The difference between them is that a process is the entire execution, while threads are paths or parts within a process, and each part performs a specific task. We used threads because we wanted to simulate process scheduling, and using threads is easier. They can also share memory, and their creation cost is lower. However, using processes for this purpose is more difficult and requires different mechanisms.
 ## Question 2: Ready Queue Behavior
 
 **Question**: In Round-Robin scheduling, what happens when a process doesn't finish within its time quantum? Explain using an example from **your** program output, including **how many times that process was re-queued** before it finished, and explain why re-queueing matters for fairness.
@@ -301,16 +300,21 @@ In a web browser, I can benefit from multithreading by using multiple tabs. For 
 
 **Your Answer:** *(3-5 sentences)*
 
-[Write your answer here.]
+If a process doesn’t finish within its time quantum, it returns to the ready queue. P2 needed 4752ms, but it used 4000ms in the first turn. It was re-queued once and finished in the second turn after 752ms. This makes scheduling fair because other processes get a chance to run.
 
 Example from my output:
-```
-[Paste a relevant snippet from your program output here showing a process being re-queued]
-```
+P2 completed quantum 4000ms | Overall progress: 84%
+Remaining time: 752ms
+P2 yields CPU for context switch
+P2 added to ready queue | priority: 3 | Burst time: 4752ms
+
+P2 executing quantum [752ms]
+P2 completed quantum 752ms | Overall progress: 100%
+Remaining time: 0ms
+P2 finished execution!
 
 **Explanation of example:**
-[Explain what is happening in the output snippet you pasted.]
-
+P2 had 752ms remaining after its first turn, so it returned to the ready queue once. In the second turn, it finished its execution. This gives other processes a chance to run before P2 finishes.
 ## Question 3: Thread Lifecycle
 
 **Question**: A thread goes through these states: **New**, **Runnable**, **Running**, **Waiting**, **Terminated**. Walk through these states for one process (e.g., P1) from your simulation. For each state, explain **when** P1 enters it and **which line or method call** triggers the transition (`Thread.start()`, `Thread.join()`, `Thread.sleep()`, etc.).
@@ -319,15 +323,15 @@ Example from my output:
 
 **Your Answer:** *(3-5 sentences overall; one short explanation per state)*
 
-1. **New**: [When is P1 in the New state?]
+1. **New**: P1 thread is created in addProcessToQueue() using new Thread(process)
 
-2. **Runnable**: [When does P1 become Runnable?]
+2. **Runnable**: P1 becomes ready to run when start() is called in the scheduler loop
 
-3. **Running**: [When is P1 Running?]
+3. **Running**: P1 executes for 4000ms in its first turn inside run(), and 2352ms remain
 
-4. **Waiting**: [When and why would a thread be Waiting?]
+4. **Waiting**: P1 returns to the ready queue to wait for another turn, and Thread.sleep() pauses its thread while the main thread waits using join()
 
-5. **Terminated**: [When is P1 Terminated?]
+5. **Terminated**: P1 finishes its remaining 2352ms in its next turn, then its thread terminates when run() finishes
 
 ## Question 4: Real-World Applications
 
@@ -340,29 +344,28 @@ Example from my output:
 ### Example 1 (operating-system level): [Name of scenario]
 
 **Description**:
-[Describe the real-world scenario.]
+The operating system shares CPU time between different running programs. Each process gets a short time to use the CPU, and if it doesn’t finish, it waits for another turn
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
-
+Round-Robin is fair because each process gets a chance to run. The process is like P1 in my simulation, the time quantum is the time given to each process, and the context switch is when the CPU moves to another process
 ### Example 2: [Name of application/scenario]
 
 **Description**:
-[Describe the real-world scenario or application.]
+In a web browser, different tasks can run at the same time, such as playing a video, loading a page, and downloading a file
 
 **Why Round-Robin works well here**:
-[Fairness, responsiveness, predictability?]
+Round-Robin gives each task a chance to use the CPU, so one task doesn’t take all the time. Each task is like a process, the time quantum is its turn, and the context switch is when the CPU moves to another task
 
 ## Summary
 
 **Key concepts I understood through these questions:**
-1.
-2.
-3.
+1.i learned how Round-Robin scheduling works and how it gives each process a turn
+2.i learned the difference between a process and a thread
+3.i learned how start(), join(), and sleep() work in Java
 
 **Concepts I need to study more:**
-1.
-2.
+1.Thread lifecycle and its different states
+2.How context switching works in operating systems
 
 ---
 
