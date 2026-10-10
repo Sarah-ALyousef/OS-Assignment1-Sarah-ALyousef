@@ -29,11 +29,11 @@
 
 | Field | Your Answer |
 |-------|-------------|
-| **Full Name** | [Write your full name here] |
-| **Student ID** | [Write your student ID here] |
-| **University Email** | [yourid]@std.psau.edu.sa |
-| **GitHub Username** | [your-github-username] |
-| **Repository Link** | [Paste your repository link here] |
+| **Full Name** | [Sarah Alyousef] |
+| **Student ID** | [444051323] |
+| **University Email** | 444051323@std.psau.edu.sa |
+| **GitHub Username** | [Sarah-Alyousef] |
+| **Repository Link** | [https://github.com/Sarah-Alyousef/OS-Assignment1-Sarah-Alyousef] |
  
 ---
 
@@ -129,69 +129,69 @@
 
 ## Your Development Log
 
-### Entry 1 - [Date and Time]
+### Entry 1 - [october 6 - 12pm]
 **What I did**:
-
+i set up my GitHub repository and VS Code to start working on the assignment
 **Details**:
-
+i learned how to use the programs and connect them to work on the assignment
 **Challenges**:
-
+The programs and tools were new to me
 **Solution**:
-
+i followed the instructions in the assignment repository README.
 **Time spent**:
-
+about 2 hours 
 ---
 
-### Entry 2 - [Date and Time]
+### Entry 2 - [october 6 - 7pm]
 **What I did**:
-
+i created my GitHub repository, changed my student ID, and made a commit
 **Details**:
-
+i set up my repository for the Operating Systems assignment and updated the student ID in the project
 **Challenges**:
-
+i was still learning how to use GitHub and make commits
 **Solution**:
-
+i followed the assignment instructions and checked my changes in the repository
 **Time spent**:
-
+about 4 hours 
 ---
 
-### Entry 3 - [Date and Time]
+### Entry 3 - [oct 7 - 7pm]
 **What I did**:
-
+i worked on the Java code and made some changes
 **Details**:
-
+i tried adding a variable and made a commit. Then, I deleted the variable and made another commit
 **Challenges**:
-
+i needed to learn how to modify the existing code
 **Solution**:
-
+i practiced making changes to the code and learned from the process
 **Time spent**:
-
+about 4 hours
 ---
 
-### Entry 4 - [Date and Time]
+### Entry 4 - [oct 8 - 9pm]
 **What I did**:
-
+Feature1 Added priority field to Process class and Feature2 Implemented context switch counter.
 **Details**:
-
+i added the priority field and created the context switch counter. I run the code, tested it, checked the results, and made two commits
 **Challenges**:
-
+i needed to learn how to run the code and make sure it worked correctly
 **Solution**:
-
+i tried different steps, practiced, and learned from the assignment instructions
 **Time spent**:
-
+about 5 hours
 ---
 
-### Entry 5 - [Date and Time]
+### Entry 5 - [oct 9 - 9pm]
 **What I did**:
-
+Feature 3: Added waiting time tracking and summary table
 **Details**:
-
+i added waiting time tracking and displayed a summary table with process name, burst time, waiting time, and turnaround time. I ran the code and checked the output Then, I made a commit and pushed it to GitHub
 **Challenges**:
-
+i had problems displaying the summary table correctly
 **Solution**:
-
+i fixed the code, run it again, and checked that the table displayed correctly
 **Time spent**:
-
+about 5 hours
 ---
 
 ### Entry 6 - [Optional - Date and Time]
@@ -211,14 +211,14 @@
 
 > 💡 **TIP:** Fill this in **last**, after all entries are written.
 
-**Total time spent on assignment**: [X hours]
+**Total time spent on assignment**: [20 hours]
 
 **Most challenging part**:
-
+learning how to use GitHub and VS Code, connect them, and make sure the three features worked correctly. I also had difficulty displaying the summary table correctly
 **Most interesting learning**:
-
+The most interesting part was modifying the Java code and learning how to run it in VS Code
 **What I would do differently next time**:
-
+Next time, I will plan my work more carefully and make sure I understand the existing code before making any changes. I will also test each feature as soon as I finish implementing it. In addition, I will document my progress regularly so I can remember the details of each step  
 ---
 
 # Part B: Reflection (0.5 mark)
@@ -236,8 +236,7 @@
 > 💡 **TIP:** Talk about thread creation (`Runnable`, `Thread.start()`), waiting with `Thread.join()`, simulating work with `Thread.sleep()`, and what surprised you.
 
 **Your Answer:** *(5-7 sentences)*
-
-[Write your answer here.]
+I learned about multithreading that it is dividing a process into more than one thread, and each thread belongs to a process, and they can work together. I also learned that threads have their own methods, such as run(), which contains the required execution, and start(), which creates a new thread and calls run() for it. Also, the sleep() method pauses the current thread temporarily, and the join() method waits for another thread to finish. For example, in this example, each thread waits before execution.
 
 ## Question 2: What was the most challenging part of this assignment?
 
@@ -245,24 +244,21 @@
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
-
+I faced several challenges in this assignment. For example, understanding the code was difficult because it was long and required concentration and tracing the lines to understand how it worked. Also, implementing some features, such as join(), required more focus. In addition, using VS Code was challenging because I had never worked with it before. I also had to learn how to run the code and how to make a commit.
 ## Question 3: How did you overcome the challenges you faced?
 
 > 💡 **TIP:** Describe your method: reading documentation, adding `System.out.println` to debug, re-reading the README, testing after each small change, asking for help.
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
-
+I overcame these challenges by trying to understand the code by dividing it into parts and understanding each part separately. I learned from online resources how to use the join() method and other methods, and I understood how they work in the assignment code. I learned how to install VS Code and run the code. I also learned how to make a commit with a comment.
 ## Question 4: How can you apply multithreading concepts in real-world applications?
 
 > 💡 **TIP:** Use real applications you know (web browser, game, mobile app, music player) and connect each one to what you built here.
 
 **Your Answer:** *(5-7 sentences)*
 
-[Write your answer here.]
-
+In a web browser, I can benefit from multithreading by using multiple tabs. For example, one tab can play a video, another tab can be used for writing and searching, another tab can display images, and another tab can play an audio clip.
 ### Optional: What would you like to learn more about?
 
 [Any topics related to threading or operating systems that you're curious about?]
